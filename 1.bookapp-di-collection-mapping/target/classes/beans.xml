@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<bean id="bookService" class="com.bookapp.model.service.BookServiceImpl" autowire="byType"/>
+	<bean id="bookDao" class="com.bookapp.model.persistance.BookDaoImpl" primary="true">
+		<property name="booksMap">
+			<map>
+				<entry key="0" value-ref="book1" />
+				<entry key="1" value-ref="book2" />
+				<entry key="2" value-ref="book3" /> 
+			</map>
+		</property>
+	</bean>
+
+	<bean id="book1" class="com.bookapp.web.entities.Book" p:id="1" p:isbn="AAA" p:title="Java In Action" p:author="Himanshu" p:price="45.0"/>
+	<bean id="book2" class="com.bookapp.web.entities.Book" p:id="2" p:isbn="BBB" p:title="Spring In Action" p:author="Kamla Harris" p:price="33.0"/>
+	<bean id="book3" class="com.bookapp.web.entities.Book" p:id="3" p:isbn="CCC" p:title="Python In Action" p:author="John Snow" p:price="75.0"/>
+	
+		
+</beans>
